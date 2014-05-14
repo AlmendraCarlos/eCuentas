@@ -1,0 +1,51 @@
+package aieqipo.mvc.objnegocio.implementacion;
+
+import java.util.List;
+import org.hibernate.SessionFactory;
+import org.springframework.dao.support.DataAccessUtils;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import aieqipo.mvc.modelo.Usuario;
+import aieqipo.mvc.objnegocio.UsuarioBO;
+
+public class UsuarioBOImp implements UsuarioBO {
+	
+	private HibernateTemplate hibernateTemplate;
+		
+	public void setSessionFactory(SessionFactory sessionFactory){
+	
+		this.hibernateTemplate = new HibernateTemplate(sessionFactory);	
+	}	 
+	
+	@Override	
+	public void save(Usuario user) {
+	
+		hibernateTemplate.saveOrUpdate(user);	
+	} 
+	
+	@Override	
+	@SuppressWarnings("unchecked")	
+	public List<Usuario> list() {
+	
+		return hibernateTemplate.find("from Usuario");	
+	}	
+	
+	@Override
+	public Usuario buscarPorEmail(String email) {		
+		return (Usuario) DataAccessUtils.uniqueResult(hibernateTemplate.find("from Usuario where email = '" + email + "'"));	
+	}	
+	
+	@Override
+	public Usuario buscarPorEmailYUserName(String email_username) {		
+		return (Usuario) DataAccessUtils.uniqueResult(hibernateTemplate.find("from Usuario where email = '" + email_username + "' or userName = '" + email_username + "'"));	
+	}		
+	
+	@Override
+	public Usuario buscarPorID(String id) {		
+		return (Usuario) DataAccessUtils.uniqueResult(hibernateTemplate.find("from Usuario where id = " + id));	
+	}	
+	
+	@Override
+	public Usuario buscarPorSocialUserID(String id) {		
+		return (Usuario) DataAccessUtils.uniqueResult(hibernateTemplate.find("from Usuario where id_social_user = " + id));	
+	}
+}

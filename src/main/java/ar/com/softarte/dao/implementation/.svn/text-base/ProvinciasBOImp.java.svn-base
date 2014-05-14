@@ -1,0 +1,53 @@
+package aieqipo.mvc.objnegocio.implementacion;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.dao.support.DataAccessUtils;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import aieqipo.mvc.modelo.Provincias;
+import aieqipo.mvc.objnegocio.ProvinciasBO;
+
+public class ProvinciasBOImp implements ProvinciasBO {
+	
+	private HibernateTemplate hibernateTemplate;
+	private Session session;
+		
+	public void setSessionFactory(SessionFactory sessionFactory){
+	
+		this.session = sessionFactory.openSession();
+		this.hibernateTemplate = new HibernateTemplate(sessionFactory);
+	}	 
+	
+	@Override	
+	@SuppressWarnings("unchecked")	
+	public List<Provincias> list() {
+	
+		return hibernateTemplate.find("from Provincias");	
+	}	
+	
+	@Override
+	public Provincias buscarPorNombre(String nombre) {		
+		return (Provincias) DataAccessUtils.uniqueResult(hibernateTemplate.find("from Provincias where nombre = '" + nombre + "'"));	
+	}	
+	
+	@Override
+	public Provincias buscarPorID(String id) {		
+		return (Provincias) DataAccessUtils.uniqueResult(hibernateTemplate.find("from Provincias where id = " + id));	
+	}	
+	
+	@Override
+	public Provincias buscarPorIdLocalidad( String idLocalidad ) {		
+		List provinciaList = session.createSQLQuery( " select prov.id from aieqipo.localidades loc " + 
+												 	 " inner join aieqipo.departamentos dep on dep.id = loc.departamento_id " +
+												 	 " inner join aieqipo.provincias prov on prov.id = dep.provincia_id " +
+												 	 " where loc.id = " + idLocalidad ).list();
+		
+		Provincias provincia = new Provincias();
+		provincia.setId( Integer.parseInt( provinciaList.get(0).toString() ));
+		
+		return provincia;
+	}
+
+}

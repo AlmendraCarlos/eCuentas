@@ -1,0 +1,60 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+     
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
+    
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+	    <!-- Turn off working out content type based on URL file extension, should fall back to looking at the Accept headers (JACKSON) -->
+	    <property name="favorPathExtension" value="false" />
+	</bean>
+ 
+	<context:component-scan base-package="ar.com.softarte.controllers" />
+ 
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	
+	<!-- Validators -->
+	<bean class="ar.com.softarte.validators.ProductoValidator"/>
+	<bean class="ar.com.softarte.validators.MateriaPrimaValidator"/>
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<!-- Base de Datos -->
+	<import resource="data-source.xml" />
+	<import resource="hibernate.xml"/>
+	
+	<!-- Resolves views Tiles -->
+	<bean id="tilesResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="order" value="0"/>
+	    <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+		
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+	    <property name="definitions">
+	        <list>
+	            <value>/WEB-INF/conf/tiles.xml</value>
+	        </list>
+	    </property>
+	</bean>
+ 
+</beans>

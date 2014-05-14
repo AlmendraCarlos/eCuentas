@@ -1,0 +1,57 @@
+package aieqipo.mvc.objnegocio.implementacion;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.dao.support.DataAccessUtils;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import aieqipo.mvc.modelo.Departamentos;
+import aieqipo.mvc.modelo.Provincias;
+import aieqipo.mvc.objnegocio.DepartamentosBO;
+
+public class DepartamentosBOImp implements DepartamentosBO {
+	
+	private HibernateTemplate hibernateTemplate;
+	private Session session;
+	
+	public void setSessionFactory(SessionFactory sessionFactory){
+	
+		this.session = sessionFactory.openSession();
+		this.hibernateTemplate = new HibernateTemplate(sessionFactory);
+	}	 
+	
+	@Override	
+	@SuppressWarnings("unchecked")	
+	public List<Departamentos> list() {
+	
+		return hibernateTemplate.find("from Departamentos");	
+	}	
+	
+	@Override
+	public Departamentos buscarPorNombre(String nombre) {		
+		return (Departamentos) DataAccessUtils.uniqueResult(hibernateTemplate.find("from Departamentos where nombre = '" + nombre + "'"));	
+	}	
+	
+	@Override
+	public List<Departamentos> buscarPorProvinciaID(String id) {		
+		return hibernateTemplate.find("from Departamentos where provincia_id = " + id);	
+	}	
+	
+	@Override
+	public Departamentos buscarPorIdLocalidad( String idLocalidad ) {		
+		List departamentoList = session.createSQLQuery( " select dep.id from aieqipo.localidades loc " + 
+												 	 	" inner join aieqipo.departamentos dep on dep.id = loc.departamento_id " +
+												 	 	" where loc.id = " + idLocalidad ).list();
+		
+		Departamentos departamento = new Departamentos();
+		departamento.setId( Integer.parseInt( departamentoList.get(0).toString() ));
+		
+		return departamento;
+	}
+	
+	public Departamentos buscarPorId( int idDpto ) {		
+		Departamentos departamento = (Departamentos) hibernateTemplate.find("from Departementos where id = " + idDpto);		
+		return departamento;
+	}
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    
+    <definition name="base.definition" template="/pages/tiles-defs/Layout.jsp">
+        <put-attribute name="title" value="Caja Pastelera" />
+        <put-attribute name="header" value="/pages/tiles-defs/header.jsp" />
+        <put-attribute name="menu" value="/pages/tiles-defs/menu.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/pages/tiles-defs/footer.jsp" />
+        <put-attribute name="modal" value="/pages/tiles-defs/modal.jsp" />
+    </definition>
+    
+     <definition name="inicio" extends="base.definition">
+         <put-attribute name="body" value="/pages/home.jsp" />
+     </definition>
+     
+     <definition name="productos" extends="base.definition">
+         <put-attribute name="body" value="/pages/producto/listar.jsp" />
+     </definition>
+     
+     <definition name="materiaPrimaList" extends="base.definition">
+         <put-attribute name="body" value="/pages/materia_prima/listar.jsp" />
+     </definition>
+     
+     <definition name="ventas" extends="base.definition">
+         <put-attribute name="body" value="/pages/venta/listar.jsp" />
+     </definition>
+     
+     <definition name="compras" extends="base.definition">
+         <put-attribute name="body" value="/pages/compra/listar.jsp" />
+     </definition>
+ 
+</tiles-definitions>

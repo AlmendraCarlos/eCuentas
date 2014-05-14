@@ -1,0 +1,51 @@
+package aieqipo.mvc.objnegocio.implementacion;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.dao.support.DataAccessUtils;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import aieqipo.mvc.modelo.Localidades;
+import aieqipo.mvc.objnegocio.LocalidadesBO;
+
+public class LocalidadesBOImp implements LocalidadesBO {
+	
+	private HibernateTemplate hibernateTemplate;
+	private Session session;
+		
+	public void setSessionFactory(SessionFactory sessionFactory){
+	
+		this.session = sessionFactory.openSession();
+		this.hibernateTemplate = new HibernateTemplate(sessionFactory);
+	}	 
+	
+	@Override	
+	@SuppressWarnings("unchecked")	
+	public List<Localidades> list() {
+	
+		return hibernateTemplate.find("from Localidades");	
+	}	
+	
+	@Override
+	public Localidades buscarPorNombre(String nombre) {		
+		return (Localidades) DataAccessUtils.uniqueResult(hibernateTemplate.find("from Localidades where nombre = '" + nombre + "'"));	
+	}	
+	
+	@Override
+	public List<Localidades> buscarPorDepartamentoID(String id) {		
+		return hibernateTemplate.find("from Localidades where departamento_id = " + id);	
+	}	
+	
+	@Override
+	public Localidades buscarPorProvinciaIDandNombre(String provinciaId, String nombre ) {		
+		
+		List<Localidades> localidad = session.createSQLQuery( " select loc.* from aieqipo.provincias pr " +
+			 									 " inner join aieqipo.departamentos dep on dep.provincia_id = pr.id " +
+			 									 " inner join aieqipo.localidades loc on loc.departamento_id = dep.id " +
+			 									 " where pr.id = " + provinciaId + " and loc.nombre = '" + nombre + "'")
+			 									 .addEntity(Localidades.class)
+			 									 .list();
+		return localidad.get(0);
+	}	
+}
