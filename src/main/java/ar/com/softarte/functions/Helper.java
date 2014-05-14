@@ -11,7 +11,9 @@ import ar.com.softarte.model.IngredientesProducto;
 import ar.com.softarte.model.MateriaPrima;
 import ar.com.softarte.model.Producto;
 import ar.com.softarte.model.Venta;
-
+/*
+Comentario de prueba para GIT
+*/
 public abstract class Helper {
 
 	public static List<Producto> getCostoProductos(List<Producto> productos) {
