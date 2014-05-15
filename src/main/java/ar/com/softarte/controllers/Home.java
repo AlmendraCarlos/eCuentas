@@ -19,6 +19,11 @@ public class Home {
 	@Autowired
 	private HibernateFunctionsBO hibernateFunctionsDAO;
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView displayHome() {
+        return new ModelAndView("inicio");
+    }
+	
 	@RequestMapping("/home")
 	public ModelAndView showMessage() {
 		
