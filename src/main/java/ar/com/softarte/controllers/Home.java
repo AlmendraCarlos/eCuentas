@@ -29,7 +29,7 @@ public class Home {
 	
 	@RequestMapping(value = "/getGraficoVentasXMes", method = RequestMethod.GET)
 	public @ResponseBody List<GVentasXMes> getGVentasXMes() {
-		
+		//prueba de comentario git
 		return hibernateFunctionsDAO.list();
 		
 	}
