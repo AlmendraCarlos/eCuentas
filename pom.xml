@@ -2,39 +2,39 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ar.com.softarte</groupId>
-  <artifactId>CajaPastelera</artifactId>
+  <artifactId>eCuentas</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>CajaPastelera Maven Webapp</name>
+  <name>eCuentas Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  
+
   	<properties>
-		
+
 		<spring.version>4.0.2.RELEASE</spring.version>
 		<spring.security.version>3.2.3.RELEASE</spring.security.version>
-		
+
 		<jdk.version>1.6</jdk.version>
-		
+
 		<!-- Web frameworks -->
 		<servletApi.version>2.5</servletApi.version>
 		<jspApi.version>2.1</jspApi.version>
 		<jstl.version>1.2</jstl.version>
 		<tilesJsp.version>3.0.3</tilesJsp.version>
 		<jackson.version>1.9.12</jackson.version>
-		
+
 		<!-- Logging -->
 		<slf4j.version>1.5.8</slf4j.version>
-		
+
 		<!-- Hibernate framework -->
 		<hibernate.version>3.6.7.Final</hibernate.version>
-		
+
 		<!-- Database driver -->
 		<postgresDriver.version>9.0-801.jdbc4</postgresDriver.version>
-		
+
 	</properties>
-	
+
   <dependencies>
-  
+
 	<!-- Dependencias de Logging -->
 	<dependency>
 		<groupId>org.slf4j</groupId>
@@ -47,7 +47,7 @@
 		<version>${slf4j.version}</version>
 		<scope>runtime</scope>
 	</dependency>
-		
+
 	<!-- Spring -->
     <dependency>
 		<groupId>org.springframework</groupId>
@@ -85,7 +85,7 @@
 		<artifactId>spring-security-config</artifactId>
 		<version>${spring.security.version}</version>
 	</dependency>
-  
+
   	<!-- Testing Unitario -->
     <dependency>
       <groupId>junit</groupId>
@@ -93,7 +93,7 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    
+
     <!-- JSP -->
 	<dependency>
 		<groupId>javax.servlet</groupId>
@@ -128,7 +128,7 @@
 				</exclusion>
 			</exclusions>
 	</dependency>
-	
+
 	<!-- JASON -->
 	<dependency>
 	    <groupId>com.fasterxml.jackson.core</groupId>
@@ -158,19 +158,19 @@
 		<artifactId>javassist</artifactId>
 		<version>3.12.1.GA</version>
 	</dependency>
-            
-	
+
+
 	<!-- Driver de conexión a base de datos -->
 	<dependency>
 		<groupId>postgresql</groupId>
 		<artifactId>postgresql</artifactId>
 		<version>${postgresDriver.version}</version>
 	</dependency>
-		
+
   </dependencies>
-  
+
   <build>
-    <finalName>CajaPastelera</finalName>
+    <finalName>eCuentas</finalName>
     <plugins>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -183,5 +183,5 @@
 		</plugin>
 	</plugins>
   </build>
-  
+
 </project>
