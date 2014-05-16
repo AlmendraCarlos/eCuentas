@@ -11,7 +11,7 @@
 							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"> 
 		 
  	<bean class="java.net.URI" id="dbUrl">
-        <constructor-arg value="${DATABASE_URL}"/>
+        <constructor-arg value="postgres://pnojkovgahqoby:GiKaFeOrSRzLOo4qJ_mU5SMTgt@ec2-54-225-182-133.compute-1.amazonaws.com:5432/d6964abtehfg8c"/>
     </bean>
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
