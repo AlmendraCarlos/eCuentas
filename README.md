@@ -19,7 +19,7 @@ Instalación
     - quitamos el source /WebContent (nuestro contenido web esta en webapp)
     - agregamos "folder" /src/main/webapp
     - por ultimo agregar "Java Build Path Entries", seleccionamos todas las librerías y aceptamos.
-    - borramos la carpeta WebContent que se genero en el raiz ya que no la vamos a usar.
+- borramos la carpeta WebContent que se genero en el raiz del proyecto ya que no la vamos a usar.
 - correr en tomcat 7
     - para ello agregamos un server apache tomcat 7
     - next a todo
