@@ -4,10 +4,12 @@
 	
 	<head>
 	
+	<c:set var="appCtx" value="${pageContext.request.contextPath}" />
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src='/eCuentas/resources/bootstrap/js/bootstrap.min.js'></script>
+	<script src='${appCtx}/resources/bootstrap/js/bootstrap.min.js'></script>
 	   
-	<link   rel="stylesheet" href='/eCuentas/resources/bootstrap/css/bootstrap.min.css' type="text/css" />
+	<link   rel="stylesheet" href='${appCtx}/resources/bootstrap/css/bootstrap.min.css' type="text/css" />
 			
 	<title>Login</title>
 	

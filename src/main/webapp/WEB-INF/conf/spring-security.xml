@@ -8,6 +8,9 @@
  
 	<http auto-config="true">
 		<intercept-url pattern="/login.htm" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/resources/img/*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/resources/jQuery/*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/resources/bootstrap/*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 		<intercept-url pattern="/**" access="ROLE_USER" />
 		<form-login 
 		    login-page="/login.htm" 
