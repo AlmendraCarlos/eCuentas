@@ -24,3 +24,25 @@ Instalación
     - para ello agregamos un server apache tomcat 7
     - next a todo
     - una vez listo clik derecho sobre el server y agregamos el proyecto
+
+Heroku
+------
+
+Este branch lo usamos para subir los cambios a heroku
+
+una vez la version productiva este en el master, nos paramos en el branch heroku y hacemos un merge del master..
+
+en este punto ya tenemos los cambios que queremos subir.
+
+Para subir a heroku hacemos "git push heroku heroku:master" lo que hacemos con este codigo es hacer un git push..
+
+al server 'heroku' del branch heroku al master de este servidor (heroku:master)
+
+
+Test Local
+----------
+export DATABASE_URL=postgres://'user':'pass'@localhost:5432/'dbName'
+
+mvn package
+
+java -jar target/dependency/jetty-runner.jar target/*.war
