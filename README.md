@@ -14,12 +14,12 @@ Instalación
     - "Project Facets"..
     - clikar en Convert..
     - checkear "Java" y "Dynamic Web Module", luego aceptamos..
-    - por ultimo borramos la carpeta WebContent que se genero en el raiz ya que no la vamos a usar.
 - agregar las librerias del M2 a el deploy path
-    - propiedades del proyecto..
+    - propiedades del proyecto.. "Deployment Assembly"
     - quitamos el source /WebContent (nuestro contenido web esta en webapp)
     - agregamos "folder" /src/main/webapp
     - por ultimo agregar "Java Build Path Entries", seleccionamos todas las librerías y aceptamos.
+- borramos la carpeta WebContent que se genero en el raiz del proyecto ya que no la vamos a usar.
 - correr en tomcat 7
     - para ello agregamos un server apache tomcat 7
     - next a todo
