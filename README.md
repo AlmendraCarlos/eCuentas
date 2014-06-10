@@ -46,3 +46,11 @@ export DATABASE_URL=postgres://'user':'pass'@localhost:5432/'dbName'
 mvn package
 
 java -jar target/dependency/jetty-runner.jar target/*.war
+
+
+DB
+---
+heroku plugins:install https://github.com/ddollar/heroku-pg-transfer
+export PATH=/usr/local/PostgreSQL/9.3/bin/:$PATH
+heroku pg:transfer -f postgres://postgres:deskjet@localhost:5432/CajaPastelera -t HEROKU_POSTGRESQL_GRAY_URL
+
