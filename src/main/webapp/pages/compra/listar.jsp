@@ -194,6 +194,8 @@ function aceptarActualizarStock(){
 
 <form id="formulario" name="formulario" class="form-inline" style="padding:0 10px 10px;" method="post" action="saveCompra.htm">
   
+  <input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
+  
   <div class="form-group">
 	<select class="form-control" id="materiaPrimaSelect" name="materiaPrima.id">
 		<option value="-1" >Seleccione una Materia Prima</option>

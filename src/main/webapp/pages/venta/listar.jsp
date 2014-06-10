@@ -155,6 +155,8 @@ $(document).ready(function(){
 
 <form id="formulario" name="formulario" class="form-inline" style="padding:0 10px 10px;" method="post" action="saveVenta.htm">
 
+	<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
+
   <input type="hidden" name="costo" id="costo" value="${model.producto.precioCosto}">
   
   <input type="hidden" name="producto.id" id="producto" value="${model.producto.id}">

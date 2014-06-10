@@ -95,6 +95,8 @@
 
 	<form id="formulario" name="formulario" class="form-horizontal">
 	
+		<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
+		
 		<input type="hidden" name="producto.id" id="producto" value="${model.producto.id}">
 	
 		<div class="form-group">

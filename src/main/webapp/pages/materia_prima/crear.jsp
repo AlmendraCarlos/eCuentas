@@ -34,6 +34,8 @@ function crearConfirmar(url) {
 
 <form id="materiaPrima"  name="materiaPrima" class="form-horizontal" method="post" action="saveMateriaPrima.htm">
 
+<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
+
 <div class="modal-header">
 
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
