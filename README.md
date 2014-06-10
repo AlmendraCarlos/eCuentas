@@ -40,7 +40,7 @@ al server 'heroku' del branch heroku al master de este servidor (heroku:master)
 
 
 Test Local
-----------
+------------
 export DATABASE_URL=postgres://'user':'pass'@localhost:5432/'dbName'
 
 mvn package
